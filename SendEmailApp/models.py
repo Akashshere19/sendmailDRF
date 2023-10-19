@@ -1,5 +1,6 @@
 from datetime import date
 from django.db import models
+from rest_framework import serializers
 
 # Create your models here.
 class Employee(models.Model):
@@ -7,7 +8,7 @@ class Employee(models.Model):
     name = models.CharField(max_length=50)
     imp_date = models.DateField()
     event_name = models.CharField(max_length=50)
-
+    email = models.EmailField()
     def __str__(self):
         return self.name  
 
@@ -18,3 +19,10 @@ class EventTemplate(models.Model):
 
     def __str__(self):
         return self.event_namefor
+
+
+
+
+
+class EmployeeNameSerializer(serializers.Serializer):
+    name = serializers.CharField()        
