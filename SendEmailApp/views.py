@@ -11,8 +11,8 @@ from rest_framework.views import APIView
 def send_email(employee,template):
     EMAIL_SERVER = "smtp.gmail.com"
     EMAIL_PORT = 587
-    EMAIL_USER = "akashshere19@gmail.com"
-    EMAIL_PASS = "cukp ghny zlkn pwbf"
+    EMAIL_USER = "your gmail add"
+    EMAIL_PASS = "your third party App gmail pass"
     server =smtplib.SMTP(EMAIL_SERVER,EMAIL_PORT)
     server.starttls()
     server.login(EMAIL_USER,EMAIL_PASS)
@@ -23,7 +23,7 @@ def send_email(employee,template):
    
     recipient_list = [employee.email]  #  recipient's email address here
 
-    # server.sendmail('',recipient_list,'subject:{}\n\n{}'.format(subject,message)) 
+    server.sendmail('',recipient_list,'subject:{}\n\n{}'.format(subject,message)) 
     print('mail Sent')
     server.close()
 
@@ -31,8 +31,6 @@ def send_email(employee,template):
 current_date = datetime.date.today() # Get the current date
 print('today date:',current_date)
 
-# up = Employee.objects.all()
-# print(up)
 upcoming_employees = Employee.objects.filter(imp_date__gte=current_date)
 
 print('upcome event:',upcoming_employees)
